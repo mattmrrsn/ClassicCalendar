@@ -1,0 +1,37 @@
+name: ClassicCalendar
+options:
+  bundleIdPrefix: com.example.classiccalendar
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: '17.0'
+    SWIFT_VERSION: '5.0'
+targets:
+  ClassicCalendar:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Shared
+    info:
+      path: App/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.classiccalendar
+        TARGETED_DEVICE_FAMILY: '1,2'
+        CODE_SIGN_ENTITLEMENTS: App/App.entitlements
+    dependencies:
+      - target: ClassicCalendarWidget
+        embed: true
+  ClassicCalendarWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Widget
+      - Shared
+    info:
+      path: Widget/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.classiccalendar.widget
+        CODE_SIGN_ENTITLEMENTS: Widget/Widget.entitlements
+        TARGETED_DEVICE_FAMILY: '1,2'
